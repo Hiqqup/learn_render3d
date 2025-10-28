@@ -14,7 +14,9 @@ add_executable(${EXE_FILE} src/main.cpp
         src/Mesh.h
         src/Window.cpp
         src/Window.h
-        src/Assets.h)
+        src/Assets.h
+        src/Mesh3d.cpp
+        src/Mesh3d.h)
 
 include(cmake/Libraries.cmake)
 

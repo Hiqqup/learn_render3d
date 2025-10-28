@@ -11,6 +11,7 @@
 #include <unistd.h>
 
 #include "Assets.h"
+#include "glm/gtc/type_ptr.hpp"
 
 struct glStatusData {
     int success;
@@ -59,4 +60,13 @@ Shader::~Shader() {
     glDetachShader(shaderProgram, fragmentShader);
     glDeleteShader(vertexShader);
     glDeleteShader(fragmentShader);
+}
+void Shader::setMatrix(const std::string &uniformName, const glm::mat4 &matrix) const {
+    const int uniformLocation = glGetUniformLocation(shaderProgram, uniformName.c_str());
+    glUniformMatrix4fv(uniformLocation, 1, GL_FALSE, glm::value_ptr(matrix));
+}
+
+void Shader::setVector(const std::string &uniformName,const  glm::vec4& vector)const {
+    const int uniformLocation = glGetUniformLocation(shaderProgram, uniformName.c_str());
+    glUniform4fv(uniformLocation, 1, glm::value_ptr(vector));
 }
