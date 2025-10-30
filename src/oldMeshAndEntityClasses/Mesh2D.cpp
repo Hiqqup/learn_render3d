@@ -2,7 +2,7 @@
 // Created by ju on 10/28/25.
 //
 
-#include "Mesh.h"
+#include "Mesh2D.h"
 #include <glad/glad.h>
 #include <vector>
 
@@ -26,7 +26,7 @@ GLuint createBuffer(GLuint bufferType, const std::vector<T> &bufferData) {
     return buffer;
 }
 
-Mesh::Mesh():
+Mesh2D::Mesh2D():
     VBO (createBuffer( GL_ARRAY_BUFFER,vertices)),
     EBO ((createBuffer(GL_ELEMENT_ARRAY_BUFFER, indices))),
     numberOfIndices(indices.size())
@@ -39,12 +39,12 @@ Mesh::Mesh():
     glEnableVertexAttribArray(0);
 }
 
-Mesh::~Mesh() {
+Mesh2D::~Mesh2D() {
     glDeleteBuffers(1, &VBO);
     glDeleteVertexArrays(1, &VAO);
 }
 
-void Mesh::draw() const {
+void Mesh2D::draw() const {
         // Bind VBO
         glBindBuffer(GL_ARRAY_BUFFER, VBO);
         glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, nullptr);

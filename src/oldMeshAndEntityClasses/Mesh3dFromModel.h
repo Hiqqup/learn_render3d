@@ -11,7 +11,7 @@
 #include <filesystem>
 #include "tiny_gltf.h"
 
-class Mesh3d {
+class Mesh3dFromModel {
     struct Primitive {
     int mode;
     size_t count;
@@ -26,9 +26,9 @@ class Mesh3d {
     std::vector<Primitive> primitives;
     tinygltf::Model loadGltf(const std::filesystem::path &gltfAssetPath);
 public:
-    explicit Mesh3d(const std::filesystem::path &gltfAssetPath, int meshIndex = 0);
+    explicit Mesh3dFromModel(const std::filesystem::path &gltfAssetPath, int meshIndex = 0);
     void draw() const ;
-    ~Mesh3d();
+    ~Mesh3dFromModel();
 
 
 };

@@ -14,9 +14,10 @@ class Shader {
     unsigned int fragmentShader;
     unsigned int shaderProgram;
     public:
-    Shader(const std::filesystem::path& vertexShaderPath =  "shaders/3d.vert"
-        , const std::filesystem::path& fragmentShaderPath = "shaders/3d.frag");
+    Shader(const std::filesystem::path& vertexShaderPath
+        , const std::filesystem::path& fragmentShaderPath  );
     ~Shader();
+    void use() const;
 
     void setMatrix(const std::string &uniformName, const glm::mat4 &matrix) const;
     void setVector(const std::string &uniformName, const glm::vec4 &vector) const;

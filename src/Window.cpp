@@ -21,7 +21,7 @@ Window::Window() {
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 
     // Create our first window
-    window = glfwCreateWindow(800, 600, "GameLabIII", nullptr, nullptr);
+    window = glfwCreateWindow(800, 800, "GameLabIII", nullptr, nullptr);
     if(window == nullptr) {
         std::cout << "Failed to create GLFW window" << std::endl;
     }

@@ -1,16 +1,15 @@
-//
-// Created by ju on 10/28/25.
+// // Created by ju on 10/28/25.
 //
 
-#include "Mesh3d.h"
+#include "Mesh3dFromModel.h"
 
 #include <iostream>
 #include <glad/glad.h>
 
-#include "Assets.h"
+#include "../Assets.h"
 #include "tiny_gltf.h"
 
-tinygltf::Model Mesh3d::loadGltf(const std::filesystem::path &gltfAssetPath) {
+tinygltf::Model Mesh3dFromModel::loadGltf(const std::filesystem::path &gltfAssetPath) {
     tinygltf::TinyGLTF loader;
     tinygltf::Model model;
     std::string err;
@@ -49,7 +48,7 @@ GLuint createBuffer(GLuint bufferType, const std::vector<T> &bufferData) {
     return buffer;
 }
 
-Mesh3d::Mesh3d(const std::filesystem::path &gltfAssetPath, int meshIndex ) {
+Mesh3dFromModel::Mesh3dFromModel(const std::filesystem::path &gltfAssetPath, int meshIndex ) {
     auto assetPath = resolveAssetPath(gltfAssetPath);
     auto model = loadGltf(assetPath);
 
@@ -106,7 +105,7 @@ Mesh3d::Mesh3d(const std::filesystem::path &gltfAssetPath, int meshIndex ) {
     glBindVertexArray(0);
 }
 
-void Mesh3d::draw() const {
+void Mesh3dFromModel::draw() const {
     glBindVertexArray(VAO);
     for(auto &primitive: primitives) {
         glDrawElements(primitive.mode, primitive.count, primitive.type, nullptr);
@@ -114,7 +113,7 @@ void Mesh3d::draw() const {
     glBindVertexArray(0);
 }
 
-Mesh3d::~Mesh3d() {
+Mesh3dFromModel::~Mesh3dFromModel() {
     for(auto &entry: buffers) {
         glDeleteBuffers(1, &entry.second);
     }

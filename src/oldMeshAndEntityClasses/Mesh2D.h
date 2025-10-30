@@ -6,16 +6,14 @@
 
 
 
-class Mesh {
+class Mesh2D {
     unsigned int VBO;
     unsigned int VAO;
     unsigned int EBO;
     int numberOfIndices;
 public:
-    Mesh();
-    ~Mesh();
+    Mesh2D();
+    ~Mesh2D();
 
     void draw() const;
-
-
 };

@@ -52,7 +52,6 @@ Shader::Shader(const std::filesystem::path &vertexShaderPath, const std::filesys
     glAttachShader(shaderProgram, vertexShader);
     glAttachShader(shaderProgram, fragmentShader);
     glLinkProgram(shaderProgram);
-    glUseProgram(shaderProgram);
 }
 
 Shader::~Shader() {
@@ -61,6 +60,11 @@ Shader::~Shader() {
     glDeleteShader(vertexShader);
     glDeleteShader(fragmentShader);
 }
+
+void Shader::use() const {
+    glUseProgram(shaderProgram);
+}
+
 void Shader::setMatrix(const std::string &uniformName, const glm::mat4 &matrix) const {
     const int uniformLocation = glGetUniformLocation(shaderProgram, uniformName.c_str());
     glUniformMatrix4fv(uniformLocation, 1, GL_FALSE, glm::value_ptr(matrix));
